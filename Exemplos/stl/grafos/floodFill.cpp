@@ -42,6 +42,5 @@ int main(){
         lista[b].push_back(a);
     }
     dfsInit();
-    
     return 0;
 }
