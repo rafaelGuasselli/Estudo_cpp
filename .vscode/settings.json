@@ -82,6 +82,7 @@
         "thread": "cpp",
         "cwctype": "cpp",
         "typeindex": "cpp",
-        "valarray": "cpp"
+        "valarray": "cpp",
+        "clocale": "cpp"
     }
 }

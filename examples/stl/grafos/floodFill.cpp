@@ -5,9 +5,21 @@ using namespace std;
 
 //Union find em forma de grafos
 
-int n, m;//n quantidade de vertices, m quantidade de arestas
+int n, m, numero_f;//vertices, arestas
 int pai[MAXN];//Mesmo do union find
 vector<int> lista[MAXN];//Lista adjacente que representa os grafos
+
+void dfsInit(){
+    for(int i = 0;i < n;i++) pai[i] = -1; // inicializamos as componentes
+    numero_f = 0;
+    for(int i = 0;i < n;i++){
+        if(pai[i] == -1){
+            numero_f++;
+            pai[i] = numero_f;
+            dfs(i);
+        }
+    }
+}
 
 void dfs(int x){
     //Percorre todos os vizinhos
@@ -22,25 +34,14 @@ void dfs(int x){
 
 int main(){
     cin >> n >> m;
-    for(int i = 1;i <= n;i++) pai[i] = -1; // inicializamos as componentes
-    for(int i = 1;i <= m;i++){
+    for(int i = 0;i < m;i++){
         int a, b;
         cin >> a >> b;
         // adicionamos cada um a lista do outro
         lista[a].push_back(b);
         lista[b].push_back(a);
     }
+    dfsInit();
     
-    int numero_f = 0;
-    for(int i = 0;i < n;i++){
-        if(pai[i] == -1){ // i ainda não tem componente
-            // começaremos uma dfs a partir de i
-            // assim, i será o começo de uma nova componente
-            numero_f++;
-            pai[i] = numero_f;
-            dfs(i);
-        }
-    }
-    cout<<numero_f<<endl;
     return 0;
 }
