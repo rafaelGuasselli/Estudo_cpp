@@ -11,7 +11,7 @@ int find(int i){
 
 //Apadrinhar
 void join(int p, int f){
-    pai[f] = p;
+    pai[f] = find(p);
 }
 
 int main(){
